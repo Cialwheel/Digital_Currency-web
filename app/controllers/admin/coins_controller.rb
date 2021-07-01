@@ -1,4 +1,6 @@
 class Admin::CoinsController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :edit, :destroy]
+  before_action :require_is_admin
   def import
     Coin.import(params[:file])
     redirect_to coins_url
@@ -35,6 +37,13 @@ class Admin::CoinsController < ApplicationController
   end
 
   private
+
+  def require_is_admin
+    if !current_user.admin?
+      flash[:alert] = "You are not admin"
+      redirect_to root_path
+    end
+  end
 
   def coin_params
     params.require(:coin).permit(:name,:mc,:mv,:price,:marketl,:quota,:week)
