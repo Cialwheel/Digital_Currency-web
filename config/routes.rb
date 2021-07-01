@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :coins
   end
-
+  resources :member
   root 'coins#index'
 end
 
