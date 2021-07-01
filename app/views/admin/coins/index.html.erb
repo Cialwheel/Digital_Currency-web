@@ -27,7 +27,11 @@
         <td><%= coin.marketl %></td>
         <td><%= coin.quota %></td>
         <td><%= coin.week %></td>
-        <td><%= link_to("Edit",edit_admin_coin_path(coin))%>
+        <td>
+          <%= link_to("Edit",edit_admin_coin_path(coin))%>
+          ｜
+          <%= link_to("Destroy",admin_coin_path(coin),:method => :delete)%>
+        </td>
       </tr>
     <% end %>
   </tbody>

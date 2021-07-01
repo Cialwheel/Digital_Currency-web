@@ -28,6 +28,12 @@ class Admin::CoinsController < ApplicationController
     end
   end
 
+  def destroy
+    @coin = Coin.find(params[:id])
+    @coin.destroy
+    redirect_to admin_coins_path
+  end
+
   private
 
   def coin_params
