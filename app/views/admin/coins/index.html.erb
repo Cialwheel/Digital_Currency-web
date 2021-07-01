@@ -3,8 +3,7 @@
     <%= link_to("Clear",clean_coins_path,method: :delete, class: "pull-right",style: "text-decoration: underline;",
     data: { confirm: "you sure ？"}) %>
 
-
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Coin_id</th>
@@ -14,6 +13,7 @@
       <th>Marketl</th>
       <th>24H</th>
       <th>7D</th>
+      <th>Operation</th>
     </tr>
   </thead>
 
@@ -27,6 +27,7 @@
         <td><%= coin.marketl %></td>
         <td><%= coin.quota %></td>
         <td><%= coin.week %></td>
+        <td><%= link_to("Edit",edit_admin_coin_path(coin))%>
       </tr>
     <% end %>
   </tbody>

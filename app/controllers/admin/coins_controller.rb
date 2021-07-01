@@ -14,4 +14,23 @@ class Admin::CoinsController < ApplicationController
     flash[:warning] = "cleaned"
     redirect_to coins_path
   end
+
+  def edit
+    @coin = Coin.find(params[:id])
+  end
+
+  def update
+    @coin = Coin.find(params[:id])
+    if @coin.update(coin_params)
+      redirect_to admin_coins_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def coin_params
+    params.require(coin).permit(:name,:mc,:mv,:price,:marketl,:quota,:week)
+  end
 end
