@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :member
   root 'coins#index'
+  post 'member/become_member' => 'member#become_member'
 end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htm
