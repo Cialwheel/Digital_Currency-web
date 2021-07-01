@@ -31,6 +31,6 @@ class Admin::CoinsController < ApplicationController
   private
 
   def coin_params
-    params.require(coin).permit(:name,:mc,:mv,:price,:marketl,:quota,:week)
+    params.require(:coin).permit(:name,:mc,:mv,:price,:marketl,:quota,:week)
   end
 end
