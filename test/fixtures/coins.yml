@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mc: MyString
+  mv: MyString
+  price: MyString
+  marketl: MyString
+  quota: MyString
+  week: MyString
+
+two:
+  mc: MyString
+  mv: MyString
+  price: MyString
+  marketl: MyString
+  quota: MyString
+  week: MyString
