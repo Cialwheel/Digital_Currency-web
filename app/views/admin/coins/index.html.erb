@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to("Clear",clean_coins_path,method: :delete, class: "pull-right",style: "text-decoration: underline;",
+    data: { confirm: "you sure ？"}) %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Coin_id</th>
+      <th>Name</th>
+      <th>MC</th>
+      <th>Price</th>
+      <th>Marketl</th>
+      <th>24H</th>
+      <th>7D</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coins.each do |coin| %>
+      <tr>
+        <td><%= coin.coinid %></td>
+        <td><%= coin.name %></td>
+        <td><%= coin.mc %></td>
+        <td><%= coin.price %></td>
+        <td><%= coin.marketl %></td>
+        <td><%= coin.quota %></td>
+        <td><%= coin.week %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_tag import_coins_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "submit" %>
+<% end %>
