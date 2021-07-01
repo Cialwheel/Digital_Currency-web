@@ -6,9 +6,9 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>Coin_id</th>
       <th>Name</th>
       <th>MC</th>
+      <th>MV</th>
       <th>Price</th>
       <th>Marketl</th>
       <th>24H</th>
@@ -20,9 +20,9 @@
   <tbody>
     <% @coins.each do |coin| %>
       <tr>
-        <td><%= coin.coinid %></td>
         <td><%= coin.name %></td>
         <td><%= coin.mc %></td>
+        <td><%= coin.mv %></td>
         <td><%= coin.price %></td>
         <td><%= coin.marketl %></td>
         <td><%= coin.quota %></td>
