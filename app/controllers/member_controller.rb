@@ -6,6 +6,10 @@ class MemberController < ApplicationController
     @user = User.find_by(params[:id])
     @user.is_member = true
     @user.save
-    redirect_to member_index_path, notice: "恭喜加入会员"
+    if @user.is_member == true
+      redirect_to member_index_path, notice: "您已加入会员"
+    else
+      redirect_to member_index_path, notice: "恭喜加入会员"
+    end
   end
 end

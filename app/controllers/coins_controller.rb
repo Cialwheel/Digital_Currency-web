@@ -1,7 +1,7 @@
 class CoinsController < ApplicationController
   def import
     Coin.import(params[:file])
-    redirect_to coins_url
+    redirect_to admin_coins_url
   end
 
   def index
@@ -12,6 +12,6 @@ class CoinsController < ApplicationController
     @coins = Coin.all
     @coins.destroy_all
     flash[:warning] = "cleaned"
-    redirect_to coins_path
+    redirect_to admin_coins_path
   end
 end
