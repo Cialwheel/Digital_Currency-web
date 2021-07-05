@@ -15,9 +15,18 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :coins
   end
+
+  resources :articles do
+    member do
+      post 'like' => 'articles#like'
+      post 'unlike' => 'articles#unlike'
+    end
+  end
+
   resources :member
   root 'coins#index'
   post 'member/become_member' => 'member#become_member'
+  post 'member/cancel_member' => 'member#cancel_member'
 end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htm

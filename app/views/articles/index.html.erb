@@ -1,28 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <h1 style="text-align:center">Articles</h1>
-
-<table>
-  <tbody>
-      <% @articles.each do |article| %>
-      <div class="panel panel-default">
-          <div class="panel-heading"><%= article.user.display_name%></div>
-          <div class="panel-body">
-            <strong style="font-size:20px"><%= article.title %></strong>
-            <br/>
-            <%= article.text %>
-            <div class="pull-right">
-              <%= link_to 'Show', article %>
-              <%= link_to 'Edit', edit_article_path(article) %>
-              <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-          </div>
-      </div>
-      <% end %>
-    </tbody>
-</table>
-
+<div id="article-list">
+  <table>
+    <tbody>
+        <% @articles.each do |article| %>
+        <%= render :partial => "article", :locals => { :article => article } %>
+        <% end %>
+      </tbody>
+  </table>
+</div>
 
 <br>
-
 <%= link_to 'New Article', new_article_path %>

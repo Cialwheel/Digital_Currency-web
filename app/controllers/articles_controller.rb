@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.order("id DESC").all
-    
   end
 
 
@@ -26,7 +25,7 @@ class ArticlesController < ApplicationController
     @article = @user.articles.new(article_params)
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: "Article was successfully created." }
+        format.html { redirect_to articles_path, notice: "Article was successfully created." }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +38,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: "Article was successfully updated." }
+        format.html { redirect_to articles_path, notice: "Article was successfully updated." }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,6 +55,24 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def like
+    @article = Article.find(params[:id])
+    unless @article.find_like(current_user)  # 如果已经按讚过了，就略过不再新增
+      Like.create( :user => current_user, :article => @article)
+    end
+
+    redirect_to articles_path
+  end
+
+  def unlike
+    @article = Article.find(params[:id])
+    like = @article.find_like(current_user)
+    like.destroy
+
+    redirect_to articles_path
+  end
+
 
   private
 

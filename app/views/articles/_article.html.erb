@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+  <% if article.user.is_member %>
+    <div class="panel-heading"><%= article.user.display_name%>(会员)</div>
+  <% else %>
+    <div class="panel-heading"><%= article.user.display_name%></div>
+  <% end %>
+    <div class="panel-body">
+      <strong style="font-size:20px"><%= article.title %></strong>
+      <br/>
+      <%= article.text %>
+      <div class="pull-right">
+        <%= link_to 'Add', article %>
+        <%= link_to 'Edit', edit_article_path(article) %>
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+
+    <div style ="text-align:right">
+      <% if article.liked_users.any? %>
+        <%= article.liked_users.map{ |u| u.display_name }.join(",") %> 点了赞
+      <% end %>
+      <% if current_user %>
+        <% if article.find_like(current_user) %>
+          <%= link_to("-1",unlike_article_path(article),:method => :post, :class => "btn btn-primary") %>
+        <% else %>
+          <%= link_to("+1",like_article_path(article),:method => :post, :class => "btn btn-primary") %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% article.comments.each do |comment| %>
+      <div class="panel-body">
+        <% if article.user.is_member %>
+          <p>commenter(会员): <%= comment.commenter%></p>
+          <p>comment: <%= comment.body %> </p>
+        <% else %>
+        <p>commenter: <%= comment.commenter%></p>
+        <p>comment: <%= comment.body %> </p>
+        <% end %>
+      </div>
+    <%end%>
+</div>
