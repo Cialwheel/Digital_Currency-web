@@ -1,11 +1,8 @@
 class CoinsController < ApplicationController
-  def import
-    Coin.import(params[:file])
-    redirect_to admin_coins_url
-  end
 
   def index
-    @coins = Coin.all
+    @q = Coin.ransack(params[:q])
+    @coins = @q.result
   end
 
   def destroy
