@@ -15,18 +15,10 @@
       </div>
     </div>
 
-    <div style ="text-align:right">
-      <% if article.liked_users.any? %>
-        <%= article.liked_users.map{ |u| u.display_name }.join(",") %> 点了赞
-      <% end %>
-      <% if current_user %>
-        <% if article.find_like(current_user) %>
-          <%= link_to("-1",unlike_article_path(article),:method => :post, :class => "btn btn-primary") %>
-        <% else %>
-          <%= link_to("+1",like_article_path(article),:method => :post, :class => "btn btn-primary") %>
-        <% end %>
-      <% end %>
-    </div>
+    
+    <span id="article-like-<%= article.id %>">
+       <%= render :partial => "like", :locals => { :article => article } %>
+   </span>
 
     <% article.comments.each do |comment| %>
       <div class="panel-body">

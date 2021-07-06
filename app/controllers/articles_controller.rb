@@ -62,7 +62,6 @@ class ArticlesController < ApplicationController
       Like.create( :user => current_user, :article => @article)
     end
 
-    redirect_to articles_path
   end
 
   def unlike
@@ -70,7 +69,7 @@ class ArticlesController < ApplicationController
     like = @article.find_like(current_user)
     like.destroy
 
-    redirect_to articles_path
+    render "like"
   end
 
 
