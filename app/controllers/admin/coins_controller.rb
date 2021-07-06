@@ -36,6 +36,17 @@ class Admin::CoinsController < ApplicationController
     redirect_to admin_coins_path
   end
 
+  def bulk_update
+    total = 0
+    Array(params[:ids]).each do |coin_id|
+      coin = Coin.find(coin_id)
+      coin.destroy
+      total+=1
+    end
+    flash[:warning] = "成功完成#{total}笔"
+    redirect_to admin_coins_path
+  end
+
   private
 
   def require_is_admin

@@ -23,6 +23,14 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :coins do
+      collection do
+        post :bulk_update
+      end
+    end
+  end
+
   resources :member
   root 'coins#index'
   post 'member/become_member' => 'member#become_member'
