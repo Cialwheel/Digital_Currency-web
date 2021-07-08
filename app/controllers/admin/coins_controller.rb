@@ -1,6 +1,7 @@
 class Admin::CoinsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :edit, :destroy]
   before_action :require_is_admin
+  layout 'admin'
   def import
     Coin.import(params[:file])
     redirect_to coins_url
