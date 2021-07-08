@@ -82,6 +82,6 @@ class ArticlesController < ApplicationController
 
 
     def article_params
-      params.require(:article).permit(:title,:text,:logo)
+      params.require(:article).permit(:title,:text,:logo,:remove_logo,:remove_images,:images=>[])
     end
 end

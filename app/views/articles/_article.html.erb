@@ -14,8 +14,10 @@
         <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
       <br/>
-      <% if article.logo.present? %>
-       <%= link_to image_tag(article.logo.url(:thumb)), article.logo.url, :target => "_blank" %>
+      <% if article.images.present? %>
+        <% article.images.each do|i|%>
+          <%= link_to image_tag(i.url(:small)), i.url %>
+        <% end %>
       <% end %>
     </div>
 

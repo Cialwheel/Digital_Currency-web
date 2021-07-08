@@ -5,6 +5,8 @@ class Article < ApplicationRecord
   has_many :likes, :dependent => :destroy
   has_many :liked_users, :through => :likes, :source => :user
   mount_uploader :logo, ArticleLogoUploader
+  mount_uploaders :images, ArticleImageUploader
+  serialize :images, JSON
 
   def find_like(user)
     self.likes.where( :user_id => user.id ).first

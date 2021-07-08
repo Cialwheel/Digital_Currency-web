@@ -19,13 +19,15 @@
        <%= f.text_area :text %>
     </p>
     <div class="form-group">
-      <%= f.label :logo %>
-      <%= f.file_field :logo, :class => "form-control" %>
-      <% if f.object.logo.present? %>
+      <%= f.label :images %>
+      <%= f.file_field :images,:multiple=>true, :class => "form-control" %>
+      <% if f.object.images.present? %>
         <label>
-          <%= f.check_box :remove_logo %> 删除图档
+          <%= f.check_box :remove_images %> 删除图档
         </label>
-        <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
+        <% f.object.images.each do |i|%>
+          <%= link_to i.filename, i.url, :target => "_blank" %>
+        <% end %>
       <% end %>
     </div>
 
