@@ -28,3 +28,14 @@
 .navbar-default .navbar-brand:hover {
   color: white;
 }
+
+.nav-pills li a {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+
+.nav-pills li :hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
