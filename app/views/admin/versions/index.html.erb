@@ -1,5 +1,7 @@
 <h2>Recording</h2>
-
+<div class="col-md-12">
+  <%= link_to("Clear",clean_admin_versions_path,method: :delete, class: "pull-right",style: "text-decoration: underline;",
+  data: { confirm: "you sure ？"}) %>
 <table class="table">
 <tr>
   <td>ID</td>
@@ -25,3 +27,4 @@
   </tr>
 <% end %>
 </table>
+<%= paginate @versions %>

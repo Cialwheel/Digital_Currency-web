@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :articles
     resources :coins
     resources :versions do
+      collection do
+        delete :clean
+      end
       post :undo
     end
   end
