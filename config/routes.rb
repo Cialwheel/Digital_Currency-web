@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :articles 
+    resources :articles
     resources :coins
+    resources :versions do
+      post :undo
+    end
   end
 
   resources :articles do
@@ -31,6 +34,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
 
   resources :member
   root 'coins#index'
