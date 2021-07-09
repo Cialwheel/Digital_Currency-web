@@ -3,4 +3,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :comments
+  has_many :articles
+  has_many :likes, :dependent => :destroy
+  has_many :liked_posts, :through => :likes, :source => :post
+
+  def admin?
+    is_admin
+  end
+
+  def display_name
+    self.email.split("@").first
+  end
+
 end

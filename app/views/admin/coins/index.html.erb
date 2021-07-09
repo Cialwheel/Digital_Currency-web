@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to("Clear",clean_coins_path,method: :delete, class: "pull-right",style: "text-decoration: underline;",
+    data: { confirm: "you sure ？"}) %>
+<%= form_tag bulk_update_admin_coins_path, :class => "form-inline" do %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
+        <th>Name</th>
+        <th>MC</th>
+        <th>MV</th>
+        <th>Price</th>
+        <th>Marketl</th>
+        <th>24H</th>
+        <th>7D</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @coins.each do |coin| %>
+        <tr>
+          <td><%= check_box_tag "ids[]", coin.id %></td>
+          <td><%= coin.name %></td>
+          <td><%= coin.mc %></td>
+          <td><%= coin.mv %></td>
+          <td><%= coin.price %></td>
+          <td><%= coin.marketl %></td>
+          <td><%= coin.quota %></td>
+          <td><%= coin.week %></td>
+          <td>
+            <%= link_to("Edit",edit_admin_coin_path(coin))%>
+            ｜
+            <%= link_to("Destroy",admin_coin_path(coin),:method => :delete)%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
+<% end %>
+
+<script>
+  $("#toggle_all").click(function(){
+    if ( $(this).prop("checked") ) {
+      $("input[name='ids[]']").prop("checked", true);
+    } else {
+      $("input[name='ids[]']").prop("checked", false);
+    }
+  })
+</script>
+
+<%= form_tag import_coins_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "submit" %>
+<% end %>

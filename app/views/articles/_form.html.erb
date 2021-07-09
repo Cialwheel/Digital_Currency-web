@@ -1,0 +1,37 @@
+<%= form_for article do |f| %>
+    <% if article.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved：</h2>
+        <ul>
+          <% article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p>
+       <%= f.label :title %><br>
+       <%= f.text_field :title %>
+    </p>
+    <p>
+       <%= f.label :text %><br>
+       <%= f.text_area :text %>
+    </p>
+    <div class="form-group">
+      <%= f.label :images %>
+      <%= f.file_field :images,:multiple=>true, :class => "form-control" %>
+      <% if f.object.images.present? %>
+        <label>
+          <%= f.check_box :remove_images %> 删除图档
+        </label>
+        <% f.object.images.each do |i|%>
+          <%= link_to i.filename, i.url, :target => "_blank" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <p>
+       <%= f.submit %>
+    </p>
+<% end %>
