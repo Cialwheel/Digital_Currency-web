@@ -1,15 +1,10 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label :name_cont %>
-  <br/>
-  <%= f.search_field :name_cont %>
-  <%= f.submit name:''%>
-  <br/>
-  <%= f.check_box :price_not_null %>
-  <%= f.label :Price_exist %>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to("Clear",clean_coins_path,method: :delete, class: "pull-right",style: "text-decoration: underline;",
+    data: { confirm: "you sure ？"}) %>
 
 
-<% end %>
-<table class="table table-boarded">
+<table>
   <thead>
     <tr>
       <th>Coin_id</th>

@@ -1,3 +1,0 @@
-str = "<%=j render :partial => "like", :locals => { :article => @article } %>";
-$("#article-like-<%= @article.id %>").html(str);
-$("#article-thumbsup-<%= @article.id %>").html("<%= @article.likes.count %>");
