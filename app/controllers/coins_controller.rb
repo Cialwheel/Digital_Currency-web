@@ -1,5 +1,10 @@
 class CoinsController < ApplicationController
 
+  def import
+    Coin.import(params[:file])
+    redirect_to coins_url
+  end
+
   def index
     @q = Coin.ransack(params[:q])
     @coins = @q.result
