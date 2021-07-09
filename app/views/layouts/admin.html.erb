@@ -15,7 +15,7 @@
               <div class="container-fluid" id="background_nav">
                   <!-- Brand and toggle get grouped for better mobile display -->
                   <div class="navbar-header">
-                      <a class="navbar-brand" href="/">Coins</a>
+                      <a class="navbar-brand" href="http://localhost:3000/admin/coins">Coins</a>
                   </div>
 
                   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -26,8 +26,9 @@
                               <li><%= link_to("注册", new_user_registration_path) %> </li>
                               <li><%= link_to("登入", new_user_session_path) %></li>
                             <% else %>
-                            <li> <%= link_to("讨论区",articles_path) %> </li>
+                            <li> <%= link_to("讨论区",admin_articles_path) %> </li>
                             <li> <%= link_to("加入会员",member_index_path) %> </li>
+                        
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                   Hi!, <%= current_user.email %>

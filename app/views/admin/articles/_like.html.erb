@@ -1,0 +1,13 @@
+<div style ="text-align:right">
+  <% if article.liked_users.any? %>
+    <%= article.liked_users.map{ |u| u.display_name }.join(",") %> 点了赞
+  <% end %>
+  <% if current_user %>
+    <% if article.find_like(current_user) %>
+      <%= link_to(icon("far fa-heart fa-2x"),unlike_article_path(article),:method => :post, :remote => true) %>
+    <% else %>
+      <%= link_to(icon("fa fa-heart-o fa-2x"),like_article_path(article),:method => :post, :remote => true) %>
+    <% end %>
+    <span id="article-thumbsup-<%= article.id %>" class="label label-success"><%= article.likes.count %> </span>
+  <% end %>
+</div>
