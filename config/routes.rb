@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :articles
     resources :coins
+    resources :checkings
     resources :versions do
       collection do
         delete :clean
