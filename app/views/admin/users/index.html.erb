@@ -1,5 +1,5 @@
 <div class='pull-right'>
-  <%= link_to("form" '') %>
+  <a class="btn btn-primary" href="#" role="button">Form</a>
 </div>
 <br/>
 <% @users.each do |user| %>
@@ -11,3 +11,4 @@
     <% end %>
     <hr/>
 <% end %>
+总用户数量为 <%= @users.count %>人
