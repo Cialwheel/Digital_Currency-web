@@ -1,2 +1,0 @@
-class Checking < ApplicationRecord
-end

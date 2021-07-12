@@ -1,0 +1,13 @@
+<div class='pull-right'>
+  <%= link_to("form" '') %>
+</div>
+<br/>
+<% @users.each do |user| %>
+    <%= user.email %>
+    <% if user.is_member == true %>
+      会员<br>
+    <% else %>
+      非会员<br>
+    <% end %>
+    <hr/>
+<% end %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'users/index'
+  end
+
   resources :articles do
     resources :comments
   end
@@ -15,7 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :articles
     resources :coins
-    resources :checkings
+    resources :users
     resources :versions do
       collection do
         delete :clean
