@@ -2,13 +2,19 @@
   <a class="btn btn-primary" href="http://localhost:3000/admin/users/show#" role="button">Form</a>
 </div>
 <br/>
+<% @n=0 %>
 <% @users.each do |user| %>
     <%= user.email %>
     <% if user.is_member == true %>
       会员<br>
+      <% @n = @n + 1 %>
     <% else %>
       非会员<br>
     <% end %>
     <hr/>
 <% end %>
-总用户数量为 <%= @users.count %>人
+总用户数量为 <%= @c %>人
+<br/>
+会员为 <%= @n %>人
+<br/>
+非会员为 <%= @users.count-@n %>人
