@@ -29,7 +29,7 @@
       <% @coins.each do |coin| %>
         <tr>
           <td><%= check_box_tag "ids[]", coin.id %></td>
-          <td><%= link_to(coin.name, coin_path(coin))%></td>
+          <td><%= link_to(coin.name, admin_coin_path(coin))%></td>
           <td><%= coin.mc %></td>
           <td><%= coin.mv %></td>
           <td><%= coin.price %></td>

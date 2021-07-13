@@ -12,7 +12,7 @@ class Admin::CoinsController < ApplicationController
   end
 
   def show
-    @coin = Coin.find_by(params[:id])
+    @coin = Coin.find(params[:id])
   end
 
   def destroy

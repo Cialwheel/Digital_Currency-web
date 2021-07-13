@@ -11,9 +11,9 @@ class CoinsController < ApplicationController
   end
 
   def show
-    @coin = Coin.find_by(params[:id])
+    @coin = Coin.find(params[:id])
   end
-  
+
   def destroy
     @coins = Coin.all
     @coins.destroy_all
