@@ -14,16 +14,44 @@
     <thead>
       <tr>
         <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
-        <th>Name</th>
-        <th>MC</th>
-        <th>MV</th>
-        <th>Price</th>
-        <%= link_to('下限',admin_coins_path(:order => "by_lower_bound"))%>
-        <%= link_to('上限',admin_coins_path(:order => "by_upper_bound"))%>
-        <th>Marketl</th>
-        <th>24H</th>
-        <th>7D</th>
-        <th>Operation</th>
+        <th>
+          Name
+          <%= link_to('Down',admin_coins_path(:order => "by_lowerid_bound"))%>
+          <%= link_to('Up',admin_coins_path(:order => "by_upperid_bound"))%>
+        </th>
+        <th>
+          MC
+          <%= link_to('Down',admin_coins_path(:order => "by_lowermc_bound"))%>
+          <%= link_to('Up',admin_coins_path(:order => "by_uppermc_bound"))%>
+        </th>
+        <th>
+          MV
+          <%= link_to('Down',admin_coins_path(:order => "by_lowermv_bound"))%>
+          <%= link_to('Up',admin_coins_path(:order => "by_uppermv_bound"))%>
+        </th>
+        <th>
+          Price
+          <%= link_to('Down',admin_coins_path(:order => "by_lowerprice_bound"))%>
+          <%= link_to('Up',admin_coins_path(:order => "by_upperprice_bound"))%>
+        </th>
+        <th>
+          Marketl
+          <%= link_to('Down',admin_coins_path(:order => "by_lowerml_bound"))%>
+          <%= link_to('Up',admin_coins_path(:order => "by_upperml_bound"))%>
+        </th>
+        <th>
+          24H
+          <%= link_to('Down',admin_coins_path(:order => "by_lowerquota_bound"))%>
+          <%= link_to('Up',admin_coins_path(:order => "by_upperquota_bound"))%>
+        </th>
+        <th>
+          7D
+          <%= link_to('Down',admin_coins_path(:order => "by_lowerweek_bound"))%>
+          <%= link_to('Up',admin_coins_path(:order => "by_upperweek_bound"))%>
+        </th>
+        <th>
+          Operation
+        </th>
       </tr>
     </thead>
 
