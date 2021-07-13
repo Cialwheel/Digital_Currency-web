@@ -8,7 +8,14 @@ class Admin::CoinsController < ApplicationController
   end
 
   def index
-    @coins = Coin.all
+    @coins = case params[:order]
+            when 'by_lower_bound'
+              Coin.order('id DESC')
+            when 'by_upper_bound'
+              Coin.order('id ASC')
+            else
+              Coin.order('id')
+            end
   end
 
   def show
