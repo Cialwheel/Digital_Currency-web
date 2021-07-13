@@ -1,3 +1,10 @@
+<head>
+<style>
+  a:hover{
+    text-decoration :none;
+  }
+</style>
+
 <%= search_form_for @q do |f| %>
   <%= f.label :name_cont %>
   <br/>
@@ -26,7 +33,7 @@
     <% @coins.each do |coin| %>
       <tr>
         <td><%= coin.coinid %></td>
-        <td><%= coin.name %></td>
+        <td><%= link_to(coin.name,coin_path(coin))%></td>
         <td><%= coin.mc %></td>
         <td><%= coin.price %></td>
         <td><%= coin.marketl %></td>
@@ -41,3 +48,4 @@
   <%= file_field_tag :file %>
   <%= submit_tag "submit" %>
 <% end %>
+</head>

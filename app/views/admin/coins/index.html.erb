@@ -1,3 +1,10 @@
+<head>
+<style>
+  a:hover{
+    text-decoration :none;
+  }
+</style>
+
 <div class="row">
   <div class="col-md-12">
     <%= link_to("Clear",clean_coins_path,method: :delete, class: "pull-right",style: "text-decoration: underline;",
@@ -22,7 +29,7 @@
       <% @coins.each do |coin| %>
         <tr>
           <td><%= check_box_tag "ids[]", coin.id %></td>
-          <td><%= coin.name %></td>
+          <td><%= link_to(coin.name, coin_path(coin))%></td>
           <td><%= coin.mc %></td>
           <td><%= coin.mv %></td>
           <td><%= coin.price %></td>
@@ -56,3 +63,4 @@
   <%= file_field_tag :file %>
   <%= submit_tag "submit" %>
 <% end %>
+</head>

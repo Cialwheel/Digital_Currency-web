@@ -10,6 +10,10 @@ class CoinsController < ApplicationController
     @coins = @q.result
   end
 
+  def show
+    @coin = Coin.find_by(params[:id])
+  end
+  
   def destroy
     @coins = Coin.all
     @coins.destroy_all
