@@ -19,13 +19,91 @@
 <table class="table table-boarded">
   <thead>
     <tr>
-      <th>Coin_id</th>
-      <th>Name</th>
-      <th>MC</th>
-      <th>Price</th>
-      <th>Marketl</th>
-      <th>24H</th>
-      <th>7D</th>
+      <th>ID</th>
+      <th>
+        <% if params[:order] == 'by_upperid_bound' %>
+          <%= link_to('Name',coins_path(:order =>"by_lowerid_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-down'),coins_path(:order => "by_lowerid_bound")) %>
+        <% elsif params[:order] == 'by_lowerid_bound' %>
+          <%= link_to('Name',coins_path(:order =>"by_upperid_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-up'),coins_path(:order => "by_upperid_bound")) %>
+        <% else %>
+          <%= link_to('Name',coins_path(:order =>"by_lowerid_bound" )) %>
+          <%= link_to(icon('fa fa-arrows-v'),coins_path(:order => "by_lowerid_bound")) %>
+        <% end %>
+      </th>
+      <th>
+        <% if params[:order] == 'by_uppermc_bound' %>
+          <%= link_to('MC',coins_path(:order =>"by_lowermc_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-down'),coins_path(:order => "by_lowermc_bound")) %>
+        <% elsif params[:order] == 'by_lowermc_bound' %>
+          <%= link_to('MC',coins_path(:order =>"by_uppermc_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-up'),coins_path(:order => "by_uppermc_bound")) %>
+        <% else %>
+          <%= link_to('MC',coins_path(:order =>"by_lowermc_bound" )) %>
+          <%= link_to(icon('fa fa-arrows-v'),coins_path(:order => "by_lowermc_bound")) %>
+        <% end %>
+      </th>
+      <th>
+        <% if params[:order] == 'by_uppermv_bound' %>
+          <%= link_to('MV',coins_path(:order =>"by_lowermv_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-down'),coins_path(:order => "by_lowermv_bound")) %>
+        <% elsif params[:order] == 'by_lowermv_bound' %>
+          <%= link_to('MV',coins_path(:order =>"by_uppermv_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-up'),coins_path(:order => "by_uppermv_bound")) %>
+        <% else %>
+          <%= link_to('MV',coins_path(:order =>"by_lowermv_bound" )) %>
+          <%= link_to(icon('fa fa-arrows-v'),coins_path(:order => "by_lowermv_bound")) %>
+        <% end %>
+      </th>
+      <th>
+        <% if params[:order] == 'by_upperprice_bound' %>
+          <%= link_to('Price',coins_path(:order =>"by_lowerprice_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-down'),coins_path(:order => "by_lowerprice_bound")) %>
+        <% elsif params[:order] == 'by_lowerprice_bound' %>
+          <%= link_to('Price',coins_path(:order =>"by_upperprice_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-up'),coins_path(:order => "by_upperprice_bound")) %>
+        <% else %>
+          <%= link_to('Price',coins_path(:order =>"by_lowerprice_bound" )) %>
+          <%= link_to(icon('fa fa-arrows-v'),coins_path(:order => "by_lowerprice_bound")) %>
+        <% end %>
+      </th>
+      <th>
+        <% if params[:order] == 'by_upperml_bound' %>
+          <%= link_to('Marketl',coins_path(:order =>"by_lowerml_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-down'),coins_path(:order => "by_lowerml_bound")) %>
+        <% elsif params[:order] == 'by_lowerml_bound' %>
+          <%= link_to('Marketl',coins_path(:order =>"by_upperml_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-up'),coins_path(:order => "by_upperml_bound")) %>
+        <% else %>
+          <%= link_to('Marketl',coins_path(:order =>"by_lowerml_bound" )) %>
+          <%= link_to(icon('fa fa-arrows-v'),coins_path(:order => "by_lowerml_bound")) %>
+        <% end %>
+      </th>
+      <th>
+        <% if params[:order] == 'by_upperquota_bound' %>
+          <%= link_to('24H',coins_path(:order =>"by_lowerquota_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-down'),coins_path(:order => "by_lowerquota_bound")) %>
+        <% elsif params[:order] == 'by_lowerquota_bound' %>
+          <%= link_to('24H',coins_path(:order =>"by_upperquota_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-up'),coins_path(:order => "by_upperquota_bound")) %>
+        <% else %>
+          <%= link_to('24H',coins_path(:order =>"by_lowerquota_bound" )) %>
+          <%= link_to(icon('fa fa-arrows-v'),coins_path(:order => "by_lowerquota_bound")) %>
+        <% end %>
+      </th>
+      <th>
+        <% if params[:order] == 'by_upperweek_bound' %>
+          <%= link_to('Week',coins_path(:order =>"by_lowerweek_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-down'),coins_path(:order => "by_lowerweek_bound")) %>
+        <% elsif params[:order] == 'by_lowerweek_bound' %>
+          <%= link_to('Week',coins_path(:order =>"by_upperweek_bound" )) %>
+          <%= link_to(icon('fa fa-long-arrow-up'),coins_path(:order => "by_upperweek_bound")) %>
+        <% else %>
+          <%= link_to('Week',coins_path(:order =>"by_lowerweek_bound" )) %>
+          <%= link_to(icon('fa fa-arrows-v'),coins_path(:order => "by_lowerweek_bound")) %>
+        <% end %>
+      </th>
     </tr>
   </thead>
 
@@ -35,6 +113,7 @@
         <td><%= coin.coinid %></td>
         <td><%= link_to(coin.name,coin_path(coin))%></td>
         <td><%= coin.mc %></td>
+        <td><%= coin.mv %></td>
         <td><%= coin.price %></td>
         <td><%= coin.marketl %></td>
         <td><%= coin.quota %></td>

@@ -15,43 +15,88 @@
       <tr>
         <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
         <th>
-          Name
-          <% if @state == 1 %>
-            <a id="bb" href="http://localhost:3000/admin/coins?order=by_lowerid_bound">Down</a>
-            <% @state = 2 %>
+          <% if params[:order] == 'by_upperid_bound' %>
+            <%= link_to('Name',admin_coins_path(:order =>"by_lowerid_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-down'),admin_coins_path(:order => "by_lowerid_bound")) %>
+          <% elsif params[:order] == 'by_lowerid_bound' %>
+            <%= link_to('Name',admin_coins_path(:order =>"by_upperid_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-up'),admin_coins_path(:order => "by_upperid_bound")) %>
           <% else %>
-            <a id="dd" href="http://localhost:3000/admin/coins?order=by_upperid_bound">Up</a>
+            <%= link_to('Name',admin_coins_path(:order =>"by_lowerid_bound" )) %>
+            <%= link_to(icon('fa fa-arrows-v'),admin_coins_path(:order => "by_lowerid_bound")) %>
           <% end %>
         </th>
         <th>
-          MC
-          <%= link_to('Down',admin_coins_path(:order => "by_lowermc_bound"))%>
-          <%= link_to('Up',admin_coins_path(:order => "by_uppermc_bound"))%>
+          <% if params[:order] == 'by_uppermc_bound' %>
+            <%= link_to('MC',admin_coins_path(:order =>"by_lowermc_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-down'),admin_coins_path(:order => "by_lowermc_bound")) %>
+          <% elsif params[:order] == 'by_lowermc_bound' %>
+            <%= link_to('MC',admin_coins_path(:order =>"by_uppermc_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-up'),admin_coins_path(:order => "by_uppermc_bound")) %>
+          <% else %>
+            <%= link_to('MC',admin_coins_path(:order =>"by_lowermc_bound" )) %>
+            <%= link_to(icon('fa fa-arrows-v'),admin_coins_path(:order => "by_lowermc_bound")) %>
+          <% end %>
         </th>
         <th>
-          MV
-          <%= link_to('Down',admin_coins_path(:order => "by_lowermv_bound"))%>
-          <%= link_to('Up',admin_coins_path(:order => "by_uppermv_bound"))%>
+          <% if params[:order] == 'by_uppermv_bound' %>
+            <%= link_to('MV',admin_coins_path(:order =>"by_lowermv_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-down'),admin_coins_path(:order => "by_lowermv_bound")) %>
+          <% elsif params[:order] == 'by_lowermv_bound' %>
+            <%= link_to('MV',admin_coins_path(:order =>"by_uppermv_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-up'),admin_coins_path(:order => "by_uppermv_bound")) %>
+          <% else %>
+            <%= link_to('MV',admin_coins_path(:order =>"by_lowermv_bound" )) %>
+            <%= link_to(icon('fa fa-arrows-v'),admin_coins_path(:order => "by_lowermv_bound")) %>
+          <% end %>
         </th>
         <th>
-          Price
-          <%= link_to('Down',admin_coins_path(:order => "by_lowerprice_bound"))%>
-          <%= link_to('Up',admin_coins_path(:order => "by_upperprice_bound"))%>
+          <% if params[:order] == 'by_upperprice_bound' %>
+            <%= link_to('Price',admin_coins_path(:order =>"by_lowerprice_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-down'),admin_coins_path(:order => "by_lowerprice_bound")) %>
+          <% elsif params[:order] == 'by_lowerprice_bound' %>
+            <%= link_to('Price',admin_coins_path(:order =>"by_upperprice_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-up'),admin_coins_path(:order => "by_upperprice_bound")) %>
+          <% else %>
+            <%= link_to('Price',admin_coins_path(:order =>"by_lowerprice_bound" )) %>
+            <%= link_to(icon('fa fa-arrows-v'),admin_coins_path(:order => "by_lowerprice_bound")) %>
+          <% end %>
         </th>
         <th>
-          Marketl
-          <%= link_to('Down',admin_coins_path(:order => "by_lowerml_bound"))%>
-          <%= link_to('Up',admin_coins_path(:order => "by_upperml_bound"))%>
+          <% if params[:order] == 'by_upperml_bound' %>
+            <%= link_to('Marketl',admin_coins_path(:order =>"by_lowerml_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-down'),admin_coins_path(:order => "by_lowerml_bound")) %>
+          <% elsif params[:order] == 'by_lowerml_bound' %>
+            <%= link_to('Marketl',admin_coins_path(:order =>"by_upperml_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-up'),admin_coins_path(:order => "by_upperml_bound")) %>
+          <% else %>
+            <%= link_to('Marketl',admin_coins_path(:order =>"by_lowerml_bound" )) %>
+            <%= link_to(icon('fa fa-arrows-v'),admin_coins_path(:order => "by_lowerml_bound")) %>
+          <% end %>
         </th>
         <th>
-          24H
-          <%= link_to('Down',admin_coins_path(:order => "by_lowerquota_bound"))%>
-          <%= link_to('Up',admin_coins_path(:order => "by_upperquota_bound"))%>
+          <% if params[:order] == 'by_upperquota_bound' %>
+            <%= link_to('24H',admin_coins_path(:order =>"by_lowerquota_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-down'),admin_coins_path(:order => "by_lowerquota_bound")) %>
+          <% elsif params[:order] == 'by_lowerquota_bound' %>
+            <%= link_to('24H',admin_coins_path(:order =>"by_upperquota_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-up'),admin_coins_path(:order => "by_upperquota_bound")) %>
+          <% else %>
+            <%= link_to('24H',admin_coins_path(:order =>"by_lowerquota_bound" )) %>
+            <%= link_to(icon('fa fa-arrows-v'),admin_coins_path(:order => "by_lowerquota_bound")) %>
+          <% end %>
         </th>
         <th>
-          7D
-          <%= link_to('Down',admin_coins_path(:order => "by_lowerweek_bound"))%>
-          <%= link_to('Up',admin_coins_path(:order => "by_upperweek_bound"))%>
+          <% if params[:order] == 'by_upperweek_bound' %>
+            <%= link_to('Week',admin_coins_path(:order =>"by_lowerweek_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-down'),admin_coins_path(:order => "by_lowerweek_bound")) %>
+          <% elsif params[:order] == 'by_lowerweek_bound' %>
+            <%= link_to('Week',admin_coins_path(:order =>"by_upperweek_bound" )) %>
+            <%= link_to(icon('fa fa-long-arrow-up'),admin_coins_path(:order => "by_upperweek_bound")) %>
+          <% else %>
+            <%= link_to('Week',admin_coins_path(:order =>"by_lowerweek_bound" )) %>
+            <%= link_to(icon('fa fa-arrows-v'),admin_coins_path(:order => "by_lowerweek_bound")) %>
+          <% end %>
         </th>
         <th>
           Operation
@@ -98,10 +143,3 @@
   <%= submit_tag "submit" %>
 <% end %>
 </head>
-
-
-<script>
-  var state = 'Down';
-  if (clicked && state == 'Down') state = 'Up';
-  if (clicked && state == 'Up') state = 'Down';
-</script>

@@ -83,9 +83,6 @@ class Admin::CoinsController < ApplicationController
     redirect_to admin_coins_path
   end
 
-  def state
-    @state = 1
-  end
 
   private
 
