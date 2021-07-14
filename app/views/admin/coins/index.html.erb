@@ -16,8 +16,12 @@
         <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
         <th>
           Name
-          <%= link_to('Down',admin_coins_path(:order => "by_lowerid_bound"))%>
-          <%= link_to('Up',admin_coins_path(:order => "by_upperid_bound"))%>
+          <% if @state == 1 %>
+            <a id="bb" href="http://localhost:3000/admin/coins?order=by_lowerid_bound">Down</a>
+            <% @state = 2 %>
+          <% else %>
+            <a id="dd" href="http://localhost:3000/admin/coins?order=by_upperid_bound">Up</a>
+          <% end %>
         </th>
         <th>
           MC
@@ -94,3 +98,10 @@
   <%= submit_tag "submit" %>
 <% end %>
 </head>
+
+
+<script>
+  var state = 'Down';
+  if (clicked && state == 'Down') state = 'Up';
+  if (clicked && state == 'Up') state = 'Down';
+</script>
