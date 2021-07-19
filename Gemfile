@@ -43,7 +43,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'paper_trail'
 gem 'kaminari'
-gem 'mysql2'
+gem 'pg'
 group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-passenger'

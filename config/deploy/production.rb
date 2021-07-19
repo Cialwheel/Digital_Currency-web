@@ -1,10 +1,10 @@
-set :branch, "ch38"
+set :branch, "ch39"
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "8.144.168.193", user: "deploy", roles: %w{app db web}, my_property: :my_value
+server "39.103.130.90", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
