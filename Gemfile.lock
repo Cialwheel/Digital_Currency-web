@@ -265,6 +265,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.0.5)
   mini_magick
+  nokogiri (~> 1.11.7)
   paper_trail
   pg
   puma (~> 3.0)
