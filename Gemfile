@@ -44,7 +44,7 @@ gem 'mini_magick'
 gem 'paper_trail'
 gem 'kaminari'
 gem 'pg'
-gem 'nokogiri','~> 1.7.1'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'capistrano-rails'
