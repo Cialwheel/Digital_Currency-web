@@ -268,7 +268,6 @@ DEPENDENCIES
   paper_trail
   pg
   puma (~> 3.0)
-  racc (~> 1.5.2)
   rails (~> 5.0.7, >= 5.0.7.2)
   ransack (~> 2.3)
   roo
