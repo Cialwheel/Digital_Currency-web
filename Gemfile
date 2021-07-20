@@ -44,7 +44,6 @@ gem 'mini_magick'
 gem 'paper_trail'
 gem 'kaminari'
 gem 'pg'
-gem 'racc','~> 1.5.2'
 
 group :development, :test do
   gem 'capistrano-rails'
