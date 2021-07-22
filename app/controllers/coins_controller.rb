@@ -1,45 +1,24 @@
 class CoinsController < ApplicationController
 
-  def import
-    Coin.import(params[:file])
-    redirect_to coins_url
-  end
 
   def index
-    @q = Coin.ransack(params[:q])
-    @coins = @q.result
-    @coins = case params[:order]
-            when 'by_lowerid_bound'
-              Coin.order('id DESC')
-            when 'by_upperid_bound'
-              Coin.order('id ASC')
-            when 'by_lowermc_bound'
-              Coin.order('mc DESC')
-            when 'by_uppermc_bound'
-              Coin.order('mc ASC')
-            when 'by_lowermv_bound'
-              Coin.order('mv DESC')
-            when 'by_uppermv_bound'
-              Coin.order('mv ASC')
-            when 'by_lowerprice_bound'
-              Coin.order('price DESC')
-            when 'by_upperprice_bound'
-              Coin.order('price ASC')
-            when 'by_lowerml_bound'
-              Coin.order('marketl DESC')
-            when 'by_upperml_bound'
-              Coin.order('marketl ASC')
-            when 'by_lowerquota_bound'
-              Coin.order('quota DESC')
-            when 'by_upperquota_bound'
-              Coin.order('quota ASC')
-            when 'by_lowerweek_bound'
-              Coin.order('week DESC')
-            when 'by_upperweek_bound'
-              Coin.order('week ASC')
-            else
-              Coin.all
-            end
+    @search = Coin.ransack(params[:q])
+    @search.sorts = 'id DESC' if params[:order]=='by_lowerid_bound'
+    @search.sorts = 'id ASC' if params[:order]=='by_upperid_bound'
+    @search.sorts = 'mc DESC' if params[:order]=='by_lowermc_bound'
+    @search.sorts = 'mc ASC' if params[:order]=='by_uppermc_bound'
+    @search.sorts = 'mv DESC' if params[:order]=='by_lowermv_bound'
+    @search.sorts = 'mv ASC' if params[:order]=='by_uppermv_bound'
+    @search.sorts = 'price DESC' if params[:order]=='by_lowerprice_bound'
+    @search.sorts = 'price ASC' if params[:order]=='by_upperprice_bound'
+    @search.sorts = 'marketl DESC' if params[:order]=='by_lowerml_bound'
+    @search.sorts = 'marketl ASC' if params[:order]=='by_upperml_bound'
+    @search.sorts = 'quota DESC' if params[:order]=='by_lowerquota_bound'
+    @search.sorts = 'quota ASC' if params[:order]=='by_upperquota_bound'
+    @search.sorts = 'week DESC' if params[:order]=='by_lowerweek_bound'
+    @search.sorts = 'week ASC' if params[:order]=='by_upperweek_bound'
+    @coins = @search.result.paginate(page: params[:page],per_page: 10)
+
   end
 
   def show

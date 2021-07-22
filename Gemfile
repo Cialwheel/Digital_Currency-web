@@ -45,6 +45,9 @@ gem 'paper_trail'
 gem 'kaminari'
 gem 'pg'
 gem 'nokogiri','~> 1.11.7'
+gem 'will_paginate', '~> 3.0'
+
+
 
 group :development, :test do
   gem 'capistrano-rails'

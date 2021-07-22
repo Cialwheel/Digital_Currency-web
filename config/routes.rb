@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+
+
   resources :articles do
     member do
       post 'like' => 'articles#like'
