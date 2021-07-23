@@ -1,10 +1,3 @@
-<head>
-<style>
-  a:hover{
-    text-decoration :none;
-  }
-</style>
-
 <%= search_form_for @search do |f| %>
   <%= f.label :name_cont %>
   <br/>
@@ -15,9 +8,6 @@
   <%= f.label :Price_exist %>
 <% end %>
 
-<div class="pull-right">
-  <%= link_to('Detail',coinalls_path) %>
-</div>
 <table class="table table-boarded">
   <thead>
     <tr>
@@ -124,5 +114,3 @@
     <% end %>
   </tbody>
 </table>
-
-</head>

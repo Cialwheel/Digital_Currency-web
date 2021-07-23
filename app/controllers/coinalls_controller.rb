@@ -1,5 +1,4 @@
-class CoinsController < ApplicationController
-
+class CoinallsController < ApplicationController
 
   def index
     @search = Coin.ransack(params[:q])
@@ -17,21 +16,6 @@ class CoinsController < ApplicationController
     @search.sorts = 'quota ASC' if params[:order]=='by_upperquota_bound'
     @search.sorts = 'week DESC' if params[:order]=='by_lowerweek_bound'
     @search.sorts = 'week ASC' if params[:order]=='by_upperweek_bound'
-    @coins = @search.result.paginate(page: params[:page],per_page: 10)
-  end
-
-  def detail
-
-  end
-
-  def show
-    @coin = Coin.find(params[:id])
-  end
-
-  def destroy
-    @coins = Coin.all
-    @coins.destroy_all
-    flash[:warning] = "cleaned"
-    redirect_to admin_coins_path
+    @coins = @search.result
   end
 end

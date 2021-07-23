@@ -45,6 +45,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :coinalls
+
+  resources :coins do
+    collection do
+      get 'detail'
+    end
+  end
+
 
 
   resources :member
