@@ -24,8 +24,9 @@
 .navbar-default .dropdown-menu li a{
   color :#777;
 }
-.navbar-default .navbar-nav:hover li {
+.navbar-default .navbar-nav:hover ul li a{
   color :black;
+  background-color :#FF7F50;
 }
 
 .navbar-default .dropdown-menu:hover li a{
@@ -34,4 +35,5 @@
 
 .navbar-default .navbar-brand:hover {
   color :black;
+  background-color :#FF7F50;
 }

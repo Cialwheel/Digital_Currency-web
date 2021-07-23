@@ -10,7 +10,7 @@
     <%= link_to("Clear",clean_coins_path,method: :delete, class: "pull-right",style: "text-decoration: underline;",
     data: { confirm: "you sure ？"}) %>
 <%= form_tag bulk_update_admin_coins_path, :class => "form-inline" do %>
-  <table class="table table-bordered">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
@@ -138,6 +138,7 @@
   })
 </script>
 
+<p id="here">Add new recent coin info</p>
 <%= form_tag import_coins_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "submit" %>
